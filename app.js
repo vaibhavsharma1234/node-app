@@ -3,6 +3,8 @@ const bodyParser = require("body-parser")
 const request = require("request")
 const https = require("https")// lets require the https
 const app = express();
+const dotenv=require("dotenv");
+dotenv.config();
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static("public"))
 app.get("/", function (req, res) {
@@ -68,7 +70,7 @@ app.post("/failure",function(req,res){
 
 
 
-app.listen(3000, function () {
+app.listen(process.env.PORT, function () {
     console.log("server is running at port 3000")
 })
 
